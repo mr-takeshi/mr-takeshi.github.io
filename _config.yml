@@ -1,0 +1,5 @@
+title: "My Awesome Blog"
+description: "Thoughts, tutorials, and projects."
+theme: minima
+url: "https://yourusername.github.io"
+paginate: 5
