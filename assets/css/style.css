@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  background: #f4f4f4;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.posts-list .post-summary {
+  margin-bottom: 2em;
+}
+
+.posts-list .post-summary h2 {
+  margin: 0 0 0.2em 0;
+}
