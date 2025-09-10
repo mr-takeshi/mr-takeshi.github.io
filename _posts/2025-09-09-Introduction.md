@@ -1,5 +1,6 @@
 
 ---
+layout: post
 title: "Introduction"
 date: 2025-09-09
 tags: [welcome, introduction]

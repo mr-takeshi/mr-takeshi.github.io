@@ -1,5 +1,10 @@
 title: "TodayAI"
-description: "Thoughts, tutorials, and projects."
-theme: minima
+description: "Insights, tutorials, and stories."
+baseurl: ""  # or "/my-blog" if hosting in a subdirectory
 url: "https://mr-takeshi.github.io"
 paginate: 5
+paginate_path: "/page:num/"
+theme: minima
+plugins:
+  - jekyll-feed
+    # 'jekyll-paginate-v2' not supported on GitHub Pages unless built externally
