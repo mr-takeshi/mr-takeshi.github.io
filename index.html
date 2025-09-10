@@ -27,7 +27,7 @@ title: Home
       <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
       <p class="meta">{{ post.date | date: "%Y-%m-%d" }} • {{ post.tags | join: ", " }}</p>
       <p class="excerpt">{{ post.excerpt | strip_html | truncatewords: 45 }}</p>
-      <p><a href="{{ post.url | relative_url }}">Read more →</a></p>
+      <p><a href="{{ post.url | relative_url }}" class="read-more">Read more</a></p>
     </article>
   {% endfor %}
 </section>

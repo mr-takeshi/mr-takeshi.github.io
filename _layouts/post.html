@@ -4,7 +4,13 @@ layout: default
 <article class="post">
   <header class="post-header">
     <h1>{{ page.title }}</h1>
-    <p class="meta">{{ page.date | date: "%Y-%m-%d" }} • {{ page.tags | join: ", " }}</p>
+    <div class="post-meta-info">
+      <p class="meta">
+        <span class="date">📅 {{ page.date | date: "%B %d, %Y" }}</span>
+        <span class="reading-time">⏱️ {% assign words = content | number_of_words %}{% if words < 360 %}1 min read{% else %}{{ words | divided_by: 180 }} min read{% endif %}</span>
+        {% if page.tags %}<span class="tags">🏷️ {{ page.tags | join: ", " }}</span>{% endif %}
+      </p>
+    </div>
     {% if page.abstract %}
       <section class="abstract">
         <h3>Abstract</h3>
@@ -17,8 +23,61 @@ layout: default
     {{ content }}
   </section>
 
-  <section class="post-meta">
-    <h4>Methods & Reproducibility</h4>
-    <p>Code, datasets, and experimental details are linked where applicable.</p>
+  <section class="post-footer">
+    <div class="social-sharing">
+      <h4>Share this post</h4>
+      <div class="share-buttons">
+        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" class="share-btn twitter">
+          🐦 Twitter
+        </a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" class="share-btn linkedin">
+          💼 LinkedIn
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" class="share-btn facebook">
+          📘 Facebook
+        </a>
+        <button onclick="copyToClipboard('{{ page.url | absolute_url }}')" class="share-btn copy">
+          📋 Copy Link
+        </button>
+      </div>
+    </div>
+
+    <div class="post-meta">
+      <h4>Methods & Reproducibility</h4>
+      <p>Code, datasets, and experimental details are linked where applicable.</p>
+      {% if page.github_repo %}
+        <p><strong>Repository:</strong> <a href="{{ page.github_repo }}" target="_blank" rel="noopener">{{ page.github_repo }}</a></p>
+      {% endif %}
+      {% if page.dataset %}
+        <p><strong>Dataset:</strong> <a href="{{ page.dataset }}" target="_blank" rel="noopener">{{ page.dataset }}</a></p>
+      {% endif %}
+    </div>
+
+    <div class="post-navigation">
+      {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}" class="nav-link prev">
+          ← {{ page.previous.title }}
+        </a>
+      {% endif %}
+      {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}" class="nav-link next">
+          {{ page.next.title }} →
+        </a>
+      {% endif %}
+    </div>
   </section>
 </article>
+
+<script>
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(function() {
+    // Show a brief confirmation
+    const button = event.target;
+    const originalText = button.textContent;
+    button.textContent = '✅ Copied!';
+    setTimeout(() => {
+      button.textContent = originalText;
+    }, 2000);
+  });
+}
+</script>

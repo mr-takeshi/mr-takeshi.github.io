@@ -3,15 +3,79 @@ description: "Deep dives into ML research, methods, code, and reproducible exper
 baseurl: ""       # set if hosting as /repo-name
 url: "https://mr-takeshi.github.io"  # replace with your URL
 theme: minima     # simple theme; you may replace with custom
+
+# Plugins
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# Site settings
 paginate: 10
+paginate_path: "/blog/page:num/"
 markdown: kramdown
 highlighter: rouge
+timezone: UTC
+encoding: utf-8
 
 # Expose these variables to layouts
 author:
-  name: "Your Name"
-  email: your.email@example.com
+  name: "AI Researcher"
+  email: "researcher@example.com"
+  bio: "Passionate about reproducible machine learning research and open science."
+  avatar: "/assets/images/avatar.jpg"
+  social:
+    github: "mr-takeshi"
+    twitter: "scientific_ai"
+    linkedin: "scientific-ai-researcher"
+    orcid: "0000-0000-0000-0000"
+
+# SEO and social sharing
+seo:
+  type: "Blog"
+  twitter:
+    creator: "@scientific_ai"
+    site: "@scientific_ai"
+  facebook:
+    app_id: "your_facebook_app_id"
+    publisher: "https://facebook.com/yourpage"
+
+# Collections
+collections:
+  topics:
+    output: true
+    permalink: /:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "AI Researcher"
+      share: true
+      comments: true
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+      share: false
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Include in site
+include:
+  - _pages
 
 # For better math rendering in posts: include MathJax by adding script tag in layout (see below)
