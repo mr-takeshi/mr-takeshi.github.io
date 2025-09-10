@@ -1,7 +1,9 @@
 ---
 layout: page
-title: "About Me"
+title: "About"
 permalink: /about/
 ---
 
-Hello! I'm [Your Name], a blogger who loves sharing tutorials and stories.
+## About this blog
+
+This blog focuses on reproducible machine learning research, detailed methods, and implementation notes. Each article aims to include an **Abstract**, **Methods**, and **Reproducibility** section.

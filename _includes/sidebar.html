@@ -1,32 +1,55 @@
-<h2>Archive</h2>
-<ul>
-{% assign currentYear = "" %}
-{% assign currentMonth = "" %}
-{% for post in site.posts %}
-  {% assign postYear = post.date | date: "%Y" %}
-  {% assign postMonth = post.date | date: "%B" %}
+<div class="sidebar-box">
+  <h2>Search</h2>
+  <input type="search" placeholder="Search posts..." aria-label="Search posts" id="site-search" />
+</div>
 
-  {% if postYear != currentYear %}
-    {% if currentYear != "" %}</ul></li>{% endif %}
-    <li><strong>{{ postYear }}</strong>
-      <ul>
-    {% assign currentYear = postYear %}
+<div class="sidebar-box">
+  <h2>Navigation</h2>
+  <ul>
+    {% for item in site.data.navigation %}
+      <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="sidebar-box">
+  <h2>Archive</h2>
+  <ul class="archive">
+    {% assign currentYear = "" %}
     {% assign currentMonth = "" %}
-  {% endif %}
+    {% for post in site.posts %}
+      {% assign postYear = post.date | date: "%Y" %}
+      {% assign postMonth = post.date | date: "%B" %}
+      {% if postYear != currentYear %}
+        {% if currentYear != "" %}</ul></li>{% endif %}
+        <li><strong>{{ postYear }}</strong>
+          <ul>
+        {% assign currentYear = postYear %}
+        {% assign currentMonth = "" %}
+      {% endif %}
 
-  {% if postMonth != currentMonth %}
-    {% if currentMonth != "" %}</ul></li>{% endif %}
-    <li>{{ postMonth }}
-      <ul>
-    {% assign currentMonth = postMonth %}
-  {% endif %}
+      {% if postMonth != currentMonth %}
+        {% if currentMonth != "" %}</ul></li>{% endif %}
+        <li>{{ postMonth }}
+          <ul>
+        {% assign currentMonth = postMonth %}
+      {% endif %}
 
-  <li>
-    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-  </li>
+      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
 
-  {% if forloop.last %}
-      </ul></li></ul></li>
-  {% endif %}
-{% endfor %}
-</ul>
+      {% if forloop.last %}
+            </ul></li></ul></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="sidebar-box">
+  <h2>Tags</h2>
+  <ul class="tags">
+    {% assign tags_list = site.tags | sort %}
+    {% for tag in tags_list %}
+      <li><a href="{{ '/tags/#' | append: tag[0] | relative_url }}">{{ tag[0] }} ({{ tag[1].size }})</a></li>
+    {% endfor %}
+  </ul>
+</div>

@@ -3,15 +3,31 @@ layout: default
 title: Home
 ---
 
-<h1>{{ site.title }}</h1>
-<p>{{ site.description }}</p>
+<header class="hero">
+  <div class="hero-left">
+    <h1>{{ site.title }}</h1>
+    <p class="tagline">{{ site.description }}</p>
+  </div>
+  <div class="hero-right">
+    <!-- optional featured post -->
+    {% assign featured = site.posts.first %}
+    {% if featured %}
+      <article class="featured">
+        <h2><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h2>
+        <p class="meta">{{ featured.date | date: "%Y-%m-%d" }} • {{ featured.tags | join: ", " }}</p>
+        <p>{{ featured.excerpt | strip_html | truncatewords: 40 }}</p>
+      </article>
+    {% endif %}
+  </div>
+</header>
 
 <section class="posts-list">
   {% for post in site.posts %}
     <article class="post-summary">
-      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      <small>{{ post.date | date: "%Y-%m-%d" }}</small>
-      <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+      <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <p class="meta">{{ post.date | date: "%Y-%m-%d" }} • {{ post.tags | join: ", " }}</p>
+      <p class="excerpt">{{ post.excerpt | strip_html | truncatewords: 45 }}</p>
+      <p><a href="{{ post.url | relative_url }}">Read more →</a></p>
     </article>
   {% endfor %}
 </section>

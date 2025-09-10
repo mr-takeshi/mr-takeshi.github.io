@@ -1,10 +1,17 @@
-title: "TodayAI"
-description: "Insights, tutorials, and stories."
-baseurl: ""  # or "/my-blog" if hosting in a subdirectory
-url: "https://mr-takeshi.github.io"
-paginate: 5
-paginate_path: "/page:num/"
-theme: minima
+title: "Scientific AI Blog"
+description: "Deep dives into ML research, methods, code, and reproducible experiments."
+baseurl: ""       # set if hosting as /repo-name
+url: "https://mr-takeshi.github.io"  # replace with your URL
+theme: minima     # simple theme; you may replace with custom
 plugins:
   - jekyll-feed
-    # 'jekyll-paginate-v2' not supported on GitHub Pages unless built externally
+paginate: 10
+markdown: kramdown
+highlighter: rouge
+
+# Expose these variables to layouts
+author:
+  name: "Your Name"
+  email: your.email@example.com
+
+# For better math rendering in posts: include MathJax by adding script tag in layout (see below)
