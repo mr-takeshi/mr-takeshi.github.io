@@ -1,4 +1,4 @@
-title: "Scientific AI Blog"
+title: "Today AI"
 description: "Deep dives into ML research, methods, code, and reproducible experiments."
 baseurl: ""       # set if hosting as /repo-name
 url: "https://mr-takeshi.github.io"  # replace with your URL
@@ -21,8 +21,8 @@ encoding: utf-8
 
 # Expose these variables to layouts
 author:
-  name: "AI Researcher"
-  email: "researcher@example.com"
+  name: "Trung TranVan"
+  email: "trungtv1207@gmail.com"
   bio: "Passionate about reproducible machine learning research and open science."
   avatar: "/assets/images/avatar.jpg"
   social:
@@ -54,7 +54,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      author: "AI Researcher"
+      author: "Trung TranVan"
       share: true
       comments: true
   - scope:
